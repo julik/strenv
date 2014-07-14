@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = "strenv"
-  s.version = ""
+  s.version = "0.0.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Julik Tarkhanov"]
   s.date = "2014-07-14"
-  s.description = "TODO: longer description of your gem"
+  s.description = "Creates a STRICT_ENV constant that you can query for environment variables and get meaningful exceptions"
   s.email = "me@julik.nl"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -25,13 +25,14 @@ Gem::Specification.new do |s|
     "Rakefile",
     "lib/strenv.rb",
     "spec/spec_helper.rb",
-    "spec/strenv_spec.rb"
+    "spec/strenv_spec.rb",
+    "strenv.gemspec"
   ]
   s.homepage = "http://github.com/julik/strenv"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "2.0.3"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Strict ENV proxy for required environment variables"
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
