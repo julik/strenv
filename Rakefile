@@ -1,4 +1,5 @@
 # encoding: utf-8
+require_relative 'lib/strenv'
 
 require 'rubygems'
 require 'bundler'
@@ -13,12 +14,12 @@ require 'rake'
 
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
-  # gem is a Gem::Specification... see http://guides.rubygems.org/specification-reference/ for more options
+  gem.version = STRICT_ENV::VERSION
   gem.name = "strenv"
   gem.homepage = "http://github.com/julik/strenv"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Strict ENV proxy for required environment variables}
+  gem.description = %Q{Creates a STRICT_ENV constant that you can query for environment variables and get meaningful exceptions}
   gem.email = "me@julik.nl"
   gem.authors = ["Julik Tarkhanov"]
   # dependencies defined in Gemfile
