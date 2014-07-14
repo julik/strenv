@@ -1,6 +1,12 @@
 = strenv
 
-Description goes here.
+Creates a STRICT_ENV object in your global namespace. You can ask this object for environment variables just like
+you would do with ENV.
+
+However, when you pass a missing key (which happens all too often), there is going to be a meaningful exception:
+
+    STRICT_ENV['NUM_SERVERS']
+    # => STRICT_ENV::MissingVariable: No environment variable called "NUM_SERVERS" - you have to define it
 
 == Contributing to strenv
  
