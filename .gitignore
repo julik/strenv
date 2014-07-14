@@ -1,3 +1,6 @@
+# Ain' needin the lock since we are a gem
+Gemfile.lock
+
 # rcov generated
 coverage
 coverage.data
