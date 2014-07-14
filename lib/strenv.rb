@@ -1,4 +1,7 @@
-module Strenv
+# This is both a constant and a module, since in Ruby those two
+# often go together. We avoid an extra item in the namespace
+# and an extra assignment.
+module STRICT_ENV
   VERSION = '0.0.1'
   MalformedKey = Class.new(RuntimeError)
   MissingVariable = Class.new(RuntimeError)
@@ -23,5 +26,4 @@ module Strenv
   
   extend self
 end
-  
-STRICT_ENV = Strenv
+

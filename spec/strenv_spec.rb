@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe "Strenv" do
+describe "STRICT_ENV" do
   it 'creates the STRICT_ENV environment variable' do
     is_defined = defined?(STRICT_ENV)
     expect(is_defined).to eq('constant')
@@ -16,13 +16,13 @@ describe "Strenv" do
     it 'raises a meaningful error when a nil key is requested' do
       expect {
         STRICT_ENV[nil]
-      }.to raise_error(Strenv::MalformedKey, "The given environment variable name was empty or nil")
+      }.to raise_error(STRICT_ENV::MalformedKey, "The given environment variable name was empty or nil")
     end
     
     it 'raises a meaningful error when an empty key is requested' do
       expect {
         STRICT_ENV['']
-      }.to raise_error(Strenv::MalformedKey, "The given environment variable name was empty or nil")
+      }.to raise_error(STRICT_ENV::MalformedKey, "The given environment variable name was empty or nil")
     end
     
     it 'raises a meaningful error key that does not exist in ENV is requested' do
@@ -31,9 +31,10 @@ describe "Strenv" do
       expect {
         STRICT_ENV[totally_random_key]
       }.to raise_error(
-        Strenv::MissingVariable,
+        STRICT_ENV::MissingVariable,
         "No environment variable called \"#{totally_random_key}\" - you have to define it"
       )
     end
   end
 end
+
