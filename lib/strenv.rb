@@ -2,7 +2,7 @@
 # often go together. We avoid an extra item in the namespace
 # and an extra assignment.
 module STRICT_ENV
-  VERSION = '0.0.1'
+  VERSION = '0.0.2'
   MalformedKey = Class.new(RuntimeError)
   MissingVariable = Class.new(RuntimeError)
   
