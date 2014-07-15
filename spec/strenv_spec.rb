@@ -6,7 +6,24 @@ describe "STRICT_ENV" do
     expect(is_defined).to eq('constant')
   end
   
-  context 'STRICT_ENV#[]' do
+  context 'STRICT_ENV.with_protected_env' do
+    it 'protects the ENV hash from modification' do
+      old_envars = ENV.to_h.dup
+      STRICT_ENV.with_protected_env do
+        old_envars.each_pair do |key, _|
+          r = "garbled-#{SecureRandom.hex(64)}"
+          ENV[key] = r # HAVOC!
+          expect(ENV[key]).to eq(r)
+        end
+      end
+      
+      ENV.each_pair do | k, v|
+        expect(v).not_to match(/^garbled\-/), "#{k} should have been restored"
+      end
+    end
+  end
+  
+  context 'STRICT_ENV[]' do
     it 'proxies calls to [] to ENV' do
       ENV.keys.each do | key |
         expect(STRICT_ENV[key]).to eq(ENV[key])

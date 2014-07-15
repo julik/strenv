@@ -16,7 +16,15 @@ module STRICT_ENV
     ENV[key]
   end
   
-  # Run a block protecting the contents of the environment variables
+  # Run a block protecting the contents of the environment variables. This is especially useful for
+  # tests/specs that excercise methods that depend on environment variable state.
+  # Use this as a wrapper block in "around" aspects. For example, for RSpec:
+  #
+  #   RSpec.configure do |c|
+  #     c.around(:each) do |example|
+  #       STRICT_ENV.with_protected_env { example.run }
+  #     end
+  #   end
   def with_protected_env(&blk)
     preserved = ENV.to_h.dup
     yield
