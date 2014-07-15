@@ -25,6 +25,10 @@ module STRICT_ENV
   #       STRICT_ENV.with_protected_env { example.run }
   #     end
   #   end
+  # 
+  # Note that this may play up with your editor features if it mutates environment variables
+  # based on the position in the script and it runs in the same environment as your objects
+  # under test (TextMate does this).
   def with_protected_env(&blk)
     preserved = ENV.to_h.dup
     yield
