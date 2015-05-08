@@ -23,6 +23,14 @@ describe "STRICT_ENV" do
     end
   end
   
+  context 'STRICT_ENV.has_key?' do
+    it 'proxies calls to to ENV' do
+      ENV.keys.each do | key |
+        expect(STRICT_ENV.has_key?(key)).to eq(ENV.has_key?(key))
+      end
+    end
+  end
+  
   context 'STRICT_ENV[]' do
     it 'proxies calls to [] to ENV' do
       ENV.keys.each do | key |

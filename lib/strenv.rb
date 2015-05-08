@@ -2,7 +2,7 @@
 # often go together. We avoid an extra item in the namespace
 # and an extra assignment.
 module STRICT_ENV
-  VERSION = '0.0.2'
+  VERSION = '0.0.3'
   MalformedKey = Class.new(RuntimeError)
   MissingVariable = Class.new(RuntimeError)
   
@@ -14,6 +14,12 @@ module STRICT_ENV
       raise MissingVariable, "No environment variable called #{key_as_str.inspect} - you have to define it" 
     end
     ENV[key]
+  end
+  
+  # Tells whether ENV has a given key
+  def has_key?(key)
+    key_as_str = key.to_s
+    ENV.has_key?(key_as_str)
   end
   
   # Run a block protecting the contents of the environment variables. This is especially useful for
